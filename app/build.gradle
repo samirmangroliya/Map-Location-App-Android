@@ -20,6 +20,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    def newApkName = "CostaWellGrown-${variant.versionName}.apk"
+                    outputFileName = new File(newApkName)
+                }
+            }
         }
     }
     compileOptions {
